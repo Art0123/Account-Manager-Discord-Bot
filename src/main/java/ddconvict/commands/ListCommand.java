@@ -13,7 +13,7 @@ public class ListCommand extends Command {
 	
 	public ListCommand() {
 		super.name = "list";
-		super.help = "provides list of available accounts by profession name";
+		super.help = "provides a list of available accounts by profession name";
 	}
 
 	@Override
