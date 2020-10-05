@@ -11,8 +11,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 /**
  * This class adds account to database, or overwrites already existing account
- * also here you can add permissions to users, replace my discord id with yours
- * where comment is // insert your id
+ * also here you can add permissions to users
  */
 
 public class AddCommand extends Command {
