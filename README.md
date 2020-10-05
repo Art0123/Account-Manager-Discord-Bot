@@ -12,7 +12,7 @@ Additionally, [JDA Utilities](https://github.com/JDA-Applications/JDA-Utilities)
 - ```!add``` - adds account to database, example: ```!add mage1 login password```  
 If account already exists (checks profession, in this case mage1) -> the bot will ask if you want to update login/password.  
 Can also be used to add permissions for users, example ```!add permissions discord_id``` 
-- ```!acc``` - returns all accounts login/password information in PM, example ```!acc```
+- ```!acc``` - returns all accounts login/password information in PM, example ```!acc```   
 To retrieve a single account: ```!acc mage1```  
 - ```!remove``` - removes specific account (requires profession name), example: ```!remove mage1```  
 Can also remove permissions from a user, ```!remove permissions discord_id```  
