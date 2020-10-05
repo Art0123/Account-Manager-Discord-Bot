@@ -8,8 +8,7 @@ import ddconvict.database.ReadFromDB;
 
 /**
  * Provides possibility to remove accounts and permissions
- * There is one special command !remove all, which requires your id
- * replace it where you will find comment // replace with your discord id
+ * There is one special command !remove all, which requires admin discord id
  * if executed, the command !remove all will remove all existing accounts
  * from database
  */
@@ -18,7 +17,9 @@ public class RemoveCommand extends Command {
 	
 	public RemoveCommand() {
 		super.name = "remove";
-		super.help = "removes specific account[requires profession name], example: !remove bp1";
+		super.help = "removes specific account[requires profession name] -> !remove mage1"
+				+ "\nCan remove all accounts[admin only] -> !remove all"
+				+ "\nCan also remove permissions -> !remove permissions discord_id";
 	}
 
 	@Override
@@ -38,23 +39,23 @@ public class RemoveCommand extends Command {
 					event.reply("No such account as: " + userTyped[1]);
 	
 				} else if (userTyped.length == 1) {
-					event.reply("You need to specify account profession to remove, example !remove bp1");
+					event.reply("You need to specify account profession to remove, example !remove mage1");
 	
-				} else if (userTyped[1].equalsIgnoreCase("all") && event.getAuthor().getId().equals("194088158206361600")) { // replace with your discord id
+				} else if (userTyped[1].equalsIgnoreCase("all") && event.getAuthor().getId().equals(Main.adminId)) {
 					new DeleteFromDB().DeleteAllAccounts();
 					new DeleteFromDB().DeleteAllCommandsFromDB();
 					event.reply("Cleared all accounts");
 					
-				} else if ((userTyped[1].equalsIgnoreCase("all") && !event.getAuthor().getId().equals("194088158206361600")) // replace with your discord id
-					|| (userTyped[1].equalsIgnoreCase("permissions") && !event.getAuthor().getId().equals("194088158206361600"))) { // replace with your discord id
+				} else if ((userTyped[1].equalsIgnoreCase("all") && !event.getAuthor().getId().equals(Main.adminId))
+					|| (userTyped[1].equalsIgnoreCase("permissions") && !event.getAuthor().getId().equals(Main.adminId))) {
 					event.reply("You do not have permissions to do this");
 					
-				} else if (userTyped[1].equalsIgnoreCase("permissions") && event.getAuthor().getId().equals("194088158206361600")  // replace with your discord id
+				} else if (userTyped[1].equalsIgnoreCase("permissions") && event.getAuthor().getId().equals(Main.adminId)
 					&& new ReadFromDB().getPermissionList().contains(userTyped[2])) {
 					new DeleteFromDB().DeletePermission(userTyped[2]);
 					event.reply("Permissions removed from user <@" + userTyped[2] + ">");
 					
-				} else if (userTyped[1].equalsIgnoreCase("permissions") && event.getAuthor().getId().equals("194088158206361600") 
+				} else if (userTyped[1].equalsIgnoreCase("permissions") && event.getAuthor().getId().equals(Main.adminId) 
 					&& new ReadFromDB().getPermissionList().contains(userTyped[2])) {
 					event.reply("This user didn't have any permissions from the beginning");
 				} else if (userTyped[1].equalsIgnoreCase("add") 
