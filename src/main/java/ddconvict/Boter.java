@@ -59,7 +59,7 @@ public class Boter {
         
 		CommandClientBuilder builder = new CommandClientBuilder();
 		builder.setPrefix("!"); // set up desired prefix for command
-		builder.setOwnerId("194088158206361600"); // change this id to your discord id
+		builder.setOwnerId(Main.adminId);
 		builder.addCommands(new AddCommand(waiter), new AccCommand(), new RemoveCommand(), new ListCommand(), new PermissionsCommand());
 		
 		CommandClient client = builder.build();	
