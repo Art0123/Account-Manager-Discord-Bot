@@ -15,7 +15,8 @@ public class AccCommand extends Command {
 	public AccCommand() {
 		super.name = "acc";
 		super.aliases = new String[] {"accounts"};
-		super.help = "returns all accounts login/password information in PM, example: !acc \ncan also be used to retrieve single account: !acc mage1";
+		super.help = "returns all accounts login/password information in PM -> !acc "
+				+ "\nCan also be used to retrieve single account -> !acc mage1";
 	}
 
 	@Override
