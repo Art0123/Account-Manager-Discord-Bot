@@ -8,9 +8,9 @@ import java.sql.Statement;
 
 /**
  * Updates Registration table, no other table needed update possibility in this project
- * because discord id most likely won't change for a user[unique id] for Permissions
- * as well as Commands table won't need old commands updated, as only login/password
- * is changes if the user wants to modify already existing account
+ * because discord id most likely won't change for a user[unique id], for Permissions
+ * as well as Commands table won't need old commands updated, therefore, only login/password
+ * is changed if the user wants to modify already existing account
  */
 
 public class UpdateDBTable {
