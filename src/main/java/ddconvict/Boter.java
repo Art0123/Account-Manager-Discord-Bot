@@ -40,13 +40,13 @@ public class Boter {
         
         	JDA jda = null;
         
-			 try {
-					Scanner scanner = new Scanner(new File("TOKEN_HOLDER.txt"));
-					this.token = scanner.nextLine();
-			    jda = JDABuilder.createDefault(this.token).setActivity(Activity.playing("with Accounts")).build().awaitReady();
-		     } catch (InterruptedException | LoginException | IOException e) {
-			    e.printStackTrace();
-		     }
+		try {
+			Scanner scanner = new Scanner(new File("TOKEN_HOLDER.txt"));
+			this.token = scanner.nextLine();
+			jda = JDABuilder.createDefault(this.token).setActivity(Activity.playing("with Accounts")).build().awaitReady();
+		} catch (InterruptedException | LoginException | IOException e) {
+			 e.printStackTrace();
+		}
 		 
         	// just to check if builder returned null for some unexpected reason
         	assert jda != null;
