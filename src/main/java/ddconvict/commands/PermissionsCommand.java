@@ -19,16 +19,14 @@ public class PermissionsCommand extends Command{
 		super.name = "permissions";
 		super.aliases = new String[] {"permission"};
 		super.help = "provides a list of users who can use bot functionality";
-	
 	}
 
 	@Override
 	protected void execute(CommandEvent event) {
 		if (event.getAuthor().isBot()) {
 			System.out.println("its bot!");
-        	return;
-        }
-		
+        		return;
+        	}
 		
 		if (new ReadFromDB().getPermissionList().contains(event.getAuthor().getId())) {
 			ArrayList<String> getNames = new ArrayList<>();
@@ -43,8 +41,6 @@ public class PermissionsCommand extends Command{
 		} else {
 			event.reply("You don't have permissions to use this bot");
 		}
-			
-		
 	}
 	
 	private String convertToName(String userIdString, CommandEvent event) {
@@ -57,5 +53,4 @@ public class PermissionsCommand extends Command{
 		}
 		return name;
 	}
-
 }
