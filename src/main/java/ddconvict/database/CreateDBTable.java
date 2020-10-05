@@ -7,9 +7,6 @@ import java.sql.Statement;
 
 /**
  * Generates 3 tables : Registration, Commands, Permissions
- * Inserts default commands into Commands table
- * Inserts discord id of the first permissioned user, need to
- * provide it 2 times, where the comment //Insert your discord id here as a String, is added
  */
 
 public class CreateDBTable {
@@ -72,8 +69,8 @@ public class CreateDBTable {
 			
 			PreparedStatement pstmt = con.prepareStatement("INSERT INTO Permissions (PermissionList) "
 					+ "SELECT ? FROM DUAL WHERE NOT EXISTS(SELECT PermissionList FROM Permissions WHERE PermissionList = ?)");
-			pstmt.setString(1, "194088158206361600"); //Insert your discord id here as a String
-			pstmt.setString(2, "194088158206361600"); //Insert your discord id here as a String as well
+			pstmt.setString(1, Main.adminId);
+			pstmt.setString(2, Main.adminId);
 			
 			pstmt.executeUpdate();
 			System.out.println("Initial admin permissions added");
