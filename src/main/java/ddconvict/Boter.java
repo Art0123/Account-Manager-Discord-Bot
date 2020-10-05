@@ -43,7 +43,13 @@ public class Boter {
 		try {
 			Scanner scanner = new Scanner(new File("TOKEN_HOLDER.txt"));
 			this.token = scanner.nextLine();
-			jda = JDABuilder.createDefault(this.token).setActivity(Activity.playing("with Accounts")).build().awaitReady();
+			jda = JDABuilder.createDefault(this.token)
+	            		.setActivity(Activity.playing("with Accounts"))
+	            		.setChunkingFilter(ChunkingFilter.ALL) // enable member chunking for all guilds
+	            		.setMemberCachePolicy(MemberCachePolicy.ALL) // ignored if chunking enabled
+	            		.enableIntents(GatewayIntent.GUILD_MEMBERS)
+	            		.build()
+	            		.awaitReady();
 		} catch (InterruptedException | LoginException | IOException e) {
 			 e.printStackTrace();
 		}
