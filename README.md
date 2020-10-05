@@ -22,6 +22,6 @@ Can also remove permissions from a user, ```!remove permissions discord_id```
 # How to use
 In `Main.java` replace String `adminId` with your discord id.   
 In file `TOKEN_HOLDER.txt`, insert your bot token.   
-Also, H2 server should be set up according to your needs, in my case - the code uses H2 local test server, which can be left unmodified, but ideally, the bot could be hosted somewhere to have unlimited access to accounts information. In this case, of course, access to database is available as long as the project is running.
+Also, H2 server should be set up according to your needs, in my case - the code uses H2 local test server, which can be left unmodified, but ideally, the bot could be hosted somewhere to have unlimited access to accounts information. In my case, of course, access to database is available as long as the project is running.
 
 
