@@ -21,8 +21,9 @@ public class AddCommand extends Command {
 	public AddCommand(EventWaiter waiter) {
 		this.waiter = waiter;
 		super.name = "add";
-		super.help = "adds account to database - example: !add mage1 login password \n"
-				+ "if account already exists [checks profession, in this case mage1] -> the bot will ask if you want to update login/password";
+		super.help = "adds account to database -> !add mage1 login password \n"
+				+ "If account already exists [checks profession, in this case mage1] -> the bot will ask if you want to update login/password "
+				+ "\nCan be used to add permissions to user -> !add permissions discord_id";
 	}
 
 	@Override
@@ -35,7 +36,7 @@ public class AddCommand extends Command {
 		String[] userTyped = event.getMessage().getContentRaw().split("\\s+");
 		
 		if (new ReadFromDB().getPermissionList().contains(event.getAuthor().getId())) {
-			if (userTyped[1].equalsIgnoreCase("permissions") && !userTyped[2].isBlank() && event.getAuthor().getId().equals("194088158206361600")) { // insert your id
+			if (userTyped[1].equalsIgnoreCase("permissions") && !userTyped[2].isBlank() && event.getAuthor().getId().equals(Main.adminId)) {
 				if (new ReadFromDB().getPermissionList().contains(userTyped[2])) {
 					event.reply("User <@" + userTyped[2] + "> already has permissions");
 				} else {
@@ -43,7 +44,7 @@ public class AddCommand extends Command {
 					event.reply("Permissions added for user <@" + userTyped[2] + ">");
 				}
 				
-			} else if (userTyped[1].equalsIgnoreCase("permission") && !userTyped[2].isBlank() && !event.getAuthor().getId().equals("194088158206361600")) { // insert your id
+			} else if (userTyped[1].equalsIgnoreCase("permission") && !userTyped[2].isBlank() && !event.getAuthor().getId().equals(Main.adminId)) {
 				event.reply("You don't have such permissions");
 				
 			} else if (userTyped[1].equalsIgnoreCase("add") 
