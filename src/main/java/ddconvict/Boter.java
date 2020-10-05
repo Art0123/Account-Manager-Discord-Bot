@@ -29,33 +29,33 @@ public class Boter {
 		 */
 		
 		this.waiter = new EventWaiter();
-        new CreateDBTable();
+        	new CreateDBTable();
         
-        /** 
-         * initialize JDA builder, you can use other methods to initialize it
-         * but some methods I found were deprecated so I sticked with this one
-         * create your own TOKEN_HOLDER.txt, place it in project directory and insert
-         * your bot key into TOKEN_HOLDER.txt file
-         */
+		/** 
+		 * initialize JDA builder, you can use other methods to initialize it
+		 * but some methods I found were deprecated so I sticked with this one
+		 * create your own TOKEN_HOLDER.txt, place it in project directory and insert
+		 * your bot key into TOKEN_HOLDER.txt file
+		 */
         
-        JDA jda = null;
+        	JDA jda = null;
         
-		 try {
-			 	Scanner scanner = new Scanner(new File("TOKEN_HOLDER.txt"));
-				this.token = scanner.nextLine();
-	            jda = JDABuilder.createDefault(this.token).setActivity(Activity.playing("with Accounts")).build().awaitReady();
-	     } catch (InterruptedException | LoginException | IOException e) {
-	            e.printStackTrace();
-	     }
+			 try {
+					Scanner scanner = new Scanner(new File("TOKEN_HOLDER.txt"));
+					this.token = scanner.nextLine();
+			    jda = JDABuilder.createDefault(this.token).setActivity(Activity.playing("with Accounts")).build().awaitReady();
+		     } catch (InterruptedException | LoginException | IOException e) {
+			    e.printStackTrace();
+		     }
 		 
-        // just to check if builder returned null for some unexpected reason
-        assert jda != null;
+        	// just to check if builder returned null for some unexpected reason
+        	assert jda != null;
         
-        /**
-         * JDA provides utilities library for CommandClientBuilder
-         * In this case it is used to merge separate commands into builder
-         * as well as it provides helping methods for easier commands implementations
-         */
+		/**
+		 * JDA provides utilities library for CommandClientBuilder
+		 * In this case it is used to merge separate commands into builder
+		 * as well as it provides helping methods for easier commands implementations
+		 */
         
 		CommandClientBuilder builder = new CommandClientBuilder();
 		builder.setPrefix("!"); // set up desired prefix for command
@@ -64,8 +64,8 @@ public class Boter {
 		
 		CommandClient client = builder.build();	
 		
-        jda.addEventListener(client);
-        jda.addEventListener(waiter);
+		jda.addEventListener(client);
+		jda.addEventListener(waiter);
 	}
 
 }
