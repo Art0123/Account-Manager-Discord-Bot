@@ -45,8 +45,10 @@ public class PermissionsCommand extends Command{
 	
 	private String convertToName(String userIdString, CommandEvent event) {
 		String name = "";
+		Guild guild = event.getGuild();
+        	List<Member> users = guild.getMembers();
 		
-		for (Member mem : event.getGuild().getMembers()) {
+		for (Member mem : users)) {
 			if (mem.getId().equalsIgnoreCase(userIdString)) {
 				name = mem.getEffectiveName();
 			}
